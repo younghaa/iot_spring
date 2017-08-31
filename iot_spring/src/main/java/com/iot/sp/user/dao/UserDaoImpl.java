@@ -1,4 +1,4 @@
-package src.main.java.com.iot.sp.user.dao;
+package com.iot.sp.user.dao;
 
 import java.util.List;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
-import src.main.java.com.iot.sp.user.dto.UserInfo;
+import com.iot.sp.user.dto.UserInfo;
 @Repository
 public class UserDaoImpl extends SqlSessionDaoSupport  implements UserDao{
 		

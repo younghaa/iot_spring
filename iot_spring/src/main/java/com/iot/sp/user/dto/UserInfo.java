@@ -1,4 +1,4 @@
-package src.main.java.com.iot.sp.user.dto;
+package com.iot.sp.user.dto;
 
 import org.springframework.stereotype.Component;
 @Component
