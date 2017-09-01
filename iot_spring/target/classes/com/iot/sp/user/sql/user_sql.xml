@@ -16,7 +16,7 @@
 	  	usernum,
 	  	username,
 	  	age,
-	    userid,
+		userid,
 	  	userpwd,
 	  	address,
 	  	hp1,

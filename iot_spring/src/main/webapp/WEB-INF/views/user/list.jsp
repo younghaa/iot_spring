@@ -26,29 +26,39 @@
 $("#searchUser").click(function() {
 	var userName = $("#userName").val().trim();
 	if(userName==""){
-		alert("이름을 입력해주세요.");
+		alert("이름을 입력해주세요.");		
 		return;
 	}
-	var params = "userName=" + userName;
-	$.ajax({
-    		type     : "POST"
-	    ,   url      : "${rootPath}/user/list"
-	    ,   dataType : "json" 
-	    
-	    ,   data     : params
-	    ,   success : function(result){
-	    	alert(result);
-	    }
-	    ,   error : function(xhr, status, e) {
-		    	alert("에러 : "+e);
-		},
-		complete  : function() {
-		}
-	});
+	var param = {};
+	param["userName"] = name;
+	param = JSON.stringify(param);
+	var a = { 
+	        type     : "POST"
+	    	    ,   url      : "${rootPath}/user/list"
+	    	    ,   dataType : "json" 
+	    	    ,   beforeSend: function(xhr) {
+	    	        xhr.setRequestHeader("Accept", "application/json");
+	    	        xhr.setRequestHeader("Content-Type", "application/json");
+	    	    }
+	    	    ,   data     : param
+	    	    ,   success : function(result){
+	    	    	alert(result.msg);
+	    	    	if(result.data=="S"){
+	    	    		location.href = "${rootPath}/user/list";
+	    	    	}else{
+	    	    		$("#userName").val("");
+	    	    	}
+	    	    }
+	    	    ,   error : function(xhr, status, e) {
+	    		    	alert("에러 : "+e);
+	    		},
+	    		done : function(e) {
+	    		}
+	    		};
+	$.ajax(a);
 });
 
-function callback(results) {
-}
+
 	$(document).ready(function(){
 		var param = {};
 		param = JSON.stringify(param);
